@@ -26,9 +26,9 @@ const InputField = () => {
     };
 
     function noteClicked() {
-        if(data.input===''){
+        if (data.input === '') {
             alert("Add a Task First!")
-        }else{
+        } else {
             setData((prev) => {
                 return {
                     input: '',
@@ -36,18 +36,18 @@ const InputField = () => {
                     tasks: [...prev.tasks, [prev.input, prev.task]]
                 }
             });
-            
+
         }
     };
 
-    
+
     const Btn = (props) => {
         function delTask() {
-            setData((prev)=>{
+            setData((prev) => {
                 return {
                     ...prev,
-                    tasks: prev.tasks.filter((ele,index)=>{
-                        return index!==props.id;
+                    tasks: prev.tasks.filter((ele, index) => {
+                        return index !== props.id;
                     })
                 };
             });
@@ -61,10 +61,10 @@ const InputField = () => {
 
     return <>
         <div className='inputBox'>
-            <label style={{fontFamily:"'Raleway', sans-serif", padding:'10px'}}>Write Your Tasks</label>
+            <label style={{ fontFamily: "'Raleway', sans-serif", padding: '10px' }}>Write Your Tasks here, lol</label>
             <div className="inputField">
                 <Input value={data.input} name='input' autoComplete='off' placeholder='Title' onChange={inputChange} id='mainInput' />
-                <TextField value={data.task} name='task' autoComplete='off' onChange={inputChange} rows='5' rowsMax='10' label="Description"/>
+                <TextField value={data.task} name='task' autoComplete='off' onChange={inputChange} rows='5' rowsMax='10' label="Description" />
                 <Button onClick={noteClicked}><AddIcon /></Button>
             </div>
         </div>
@@ -72,7 +72,7 @@ const InputField = () => {
             {data.tasks.map((ele, index) => {
                 return <div key={index} className='task'>
                     <Note title={ele[0]} desc={ele[1]} key={index} id={index} />
-                    <Btn id={index}/>
+                    <Btn id={index} />
                 </div>
             })}
         </div>
